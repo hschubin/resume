@@ -188,6 +188,7 @@ li {
 
 #nav div:hover {
 	background-color: #1D6DCF;
+	border-radius: 0.75em 0.25em 0.25em 0.75em;
 }
 
 #nav p {
