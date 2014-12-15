@@ -1,52 +1,41 @@
 $(document).ready(function() {
 	$("#nav div").mouseover(function() {
-		$(this).siblings().css({"color":"#B7B8AD"});
+		$(this).next().css({"color":"#B7B8AD"});
 
-		var local = $(window).scrollTop();  //当前位置
-		var target = 400;  //目标位置
-		
+		var target;	//目标位置
 		switch($(this).parent().attr("id")) {
 			case "di1": target = 0; break;
 			case "di2": target = 400; break;
 			case "di3": target = 800; break;
 			case "di4": target = 1200; break;
 			case "di5": target = 1600; break;
-			default: target = 800; alert("nani?");
+			default: target = 0;
 		}
-
-		var steps = 200; //步数
-		var distance = Math.ceil((target - local) / steps);  //每次移动距离
-
-	    // 移动滚动条
-		for(var i=0; i<steps; i++) {
-			local += distance;
-			$(window).scrollTop(local);
+		if(scrol) {
+			clearInterval(scrol);
 		}
+		scrol = setInterval(scrolTo, 1, target);//移动滚动条函数
 
 	}).mouseout(function() {
-		$(this).siblings().css({"color":"#abcdef"});
+		$(this).next().css({"color":"#abcdef"});
 	});
-
-	// $("#nav div").mouseover(function() {
-	// 	var local = $(window).scrollTop();  //当前位置
-	// 	var target = 400;  //目标位置
-
-	// 	switch($(this).attr("id")) {
-	// 		case "di1": target = 0; break;
-	// 		case "di2": target = 400; break;
-	// 		case "di3": target = 800; break;
-	// 		case "di4": target = 1200; break;
-	// 		case "di5": target = 1600; break;
-	// 		default: target = 800;
-	// 	}
-
-	// 	var steps = 15; //步数
-	// 	var distance = (target - local) / steps;  //每次移动距离
-
-	//     //移动滚动条
-	// 	for(var i=0; i<steps; i++) {
-	// 		local += distance;
-	// 		$(window).scrollTop(local);
-	// 	}
-	// });
 });
+
+
+var scrol;	//导航的定位计时器
+
+function scrolTo(target) {
+	var step = 12;
+	var local = $(window).scrollTop();
+	var distance;
+	target > local ?
+		distance = Math.ceil((target - local) / step) :
+		distance = Math.floor((target - local) / step);
+
+	if(local == target) {
+		clearInterval(scrol);
+	} else {
+		local += distance;
+		$(window).scrollTop(local);
+	}
+}//将滚动条拖曳至指定位置的动画

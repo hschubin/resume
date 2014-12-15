@@ -165,10 +165,6 @@ li {
 	display: none;
 }
 
-/*.skill:first-child {
-	display: block;
-}*/
-
 
 /* third */
 
@@ -195,7 +191,7 @@ li {
 /* testing */
 
 #testingHigh {
-	height: 800px;
+	height: 400px;
 }
 
 #tryThis {
