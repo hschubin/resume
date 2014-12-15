@@ -113,25 +113,19 @@ li {
 
 /* second */
 
-#skills {
+#skillList {
 	font-size: 21px;
 	float: left;
 	width: 100%;
-	padding-bottom: 110px;
-	/*padding-bottom: 288px;*/
-	/*  $("#explanation").css("display") == static ?
-			$("skill").css("padding-bottom", "110px") :
-			$("skill").css("padding-bottom", "288px");
-	 */
 }
 
-#skillList {
+#skills {
 	color: #4d93e6;
 	margin: 0 0 0 17%;
 	display: block;
 }
 
-#skillList li {
+#skills li {
 	background-color: #abcdef;
 	float: left;
 	text-align: center;
@@ -140,7 +134,7 @@ li {
 	border-radius: 8px 8px 0 0;
 }
 
-#skillList li:hover {
+#skill li:hover {
 	/*font-size: 24px;*/
 	/*background-color: #D0E3F7;*/
 	/*padding-bottom: 7px;*/
@@ -150,7 +144,7 @@ li {
 	background-color: #fff;
 	color: #4d93e6;
 	border-radius: 0 0 8px 8px;
-	margin: 39px 16% 0 17%;
+	margin: 38px 16% 0 17%;
 	width: 62.24%;
 	height: 160px;
 	display: none;
