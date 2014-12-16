@@ -12,7 +12,8 @@ $(document).ready(function() {
 			clearTimeout(setTime);
 		}
 		if(judge) {
-			$(this).css("background-color", "#fff");
+			$(this).css("background-color", "#fff")
+				.siblings().css("background-color", "#abcdef");
 			$(this).showExplanation();
 		}
 	}).mouseout(function() {
@@ -30,8 +31,7 @@ $(document).ready(function() {
 					.siblings().css("display", "none");
 			}
 		}
-	});
-
+	});	//展开、收起与悬停 second part 的 #explanation 部分
 	$("#explanation li").mouseover(function() {
 		if(setTime) {
 			clearTimeout(setTime);
@@ -74,25 +74,6 @@ function scrolTo(target) {
 	}
 }//将滚动条拖曳至指定位置的动画
 
-$.fn.showExplanation = function() {
-	$("#explanation").slideDown();
-	var text = $(this).text();
-	for(var i=0; i < $(".skill").length; i++) {
-		if($(".skill")[i].getAttribute("title") == text) {
-			$($(".skill")[i]).fadeIn("slow")
-				.siblings().css("display", "none");
-		}
-	}
-}
-var setTime;	//个人能力说明收起计时器
-$.fn.hideExplanation = function() {
-	$("#skills li").css("background-color", "#abcdef");
-	setTime = setTimeout(function() {
-		$(".skill").css("display", "none");
-		$('#explanation').slideUp();
-	}, 600);
-}
-
 $.fn.toTarget =function() {
 	var target = 0;
 	switch($(this).parent().attr("id")) {
@@ -108,4 +89,23 @@ $.fn.toTarget =function() {
 		clearInterval(scrol);
 	}
 	scrol = setInterval(scrolTo, 1, target);//移动滚动条函数
+}
+
+$.fn.showExplanation = function() {
+	$("#explanation").slideDown();
+	var text = $(this).text();
+	for(var i=0; i < $(".skill").length; i++) {
+		if($(".skill")[i].getAttribute("title") == text) {
+			$($(".skill")[i]).fadeIn("slow")
+				.siblings().css("display", "none");
+		}
+	}
+}
+var setTime;	//个人能力说明收起计时器
+$.fn.hideExplanation = function() {
+	setTime = setTimeout(function() {
+		$(".skill").css("display", "none");
+		$('#explanation').slideUp();
+		$("#skills li").css("background-color", "#abcdef");
+	}, 600);
 }
